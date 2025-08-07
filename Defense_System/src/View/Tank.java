@@ -279,6 +279,35 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
         txtMsgBox.setText("Main Controller : " + msg);
     }
 
-    
+    @Override
+    public void defenceUnloker(int value) {
+        if (chkPosition.isSelected()) {
+            if (value >= 20) {
+                btnShoot.setEnabled(true);
+            } else {
+                btnShoot.setEnabled(false);
+            }
+            if (value >= 40) {
+                btnMissileOperation.setEnabled(true);
+            } else {
+                btnMissileOperation.setEnabled(false);
+            }
+            if (value >= 60) {
+                btnRadarOperation.setEnabled(true);
+            } else {
+                btnRadarOperation.setEnabled(false);
+            }
+            if (value >= 80) {
+                btnRotateShooting.setEnabled(true);
+            } else {
+                btnRotateShooting.setEnabled(false);
+            }
+        }else{
+            btnShoot.setEnabled(false);
+            btnMissileOperation.setEnabled(false);
+            btnRadarOperation.setEnabled(false);
+            btnRotateShooting.setEnabled(false);
+        }
+    }
 
 }

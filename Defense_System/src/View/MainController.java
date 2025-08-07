@@ -231,7 +231,8 @@ public class MainController extends javax.swing.JFrame{
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void sldDefenceUnlockerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldDefenceUnlockerStateChanged
-        
+        int value = sldDefenceUnlocker.getValue();
+        controlRoom.setDefenceUnlocker(value);
     }//GEN-LAST:event_sldDefenceUnlockerStateChanged
 
     private void txtMsgSenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMsgSenderActionPerformed

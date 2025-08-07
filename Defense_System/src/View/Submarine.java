@@ -282,6 +282,35 @@ public class Submarine extends javax.swing.JFrame implements Obs.Observer {
         txtMsgBox.setText("Main Controller : " + msg);
     }
 
-    
+    @Override
+    public void defenceUnloker(int value) {
+        if (chkPosition.isSelected()) {
+            if (value >= 20) {
+                btnShoot.setEnabled(true);
+            } else {
+                btnShoot.setEnabled(false);
+            }
+            if (value >= 40) {
+                btnSonarOperation.setEnabled(true);
+            } else {
+                btnSonarOperation.setEnabled(false);
+            }
+            if (value >= 60) {
+                btnToahawkMissile.setEnabled(true);
+            } else {
+                btnToahawkMissile.setEnabled(false);
+            }
+            if (value >= 80) {
+                btnTridentMissile.setEnabled(true);
+            } else {
+                btnTridentMissile.setEnabled(false);
+            }
+        } else{
+            btnShoot.setEnabled(false);
+            btnSonarOperation.setEnabled(false);
+            btnToahawkMissile.setEnabled(false);
+            btnTridentMissile.setEnabled(false);
+        }
+    }
 
 }
