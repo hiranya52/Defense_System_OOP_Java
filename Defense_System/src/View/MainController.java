@@ -5,20 +5,21 @@
 package View;
 
 import Obs.ControlRoom;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author hiranyamendis
  */
-public class MainController extends javax.swing.JFrame{
-    
+public class MainController extends javax.swing.JFrame {
+
     private ControlRoom controlRoom;
 
     /**
      * Creates new form MainController
      */
     public MainController(ControlRoom controlRoom) {
-        this.controlRoom=controlRoom;
+        this.controlRoom = controlRoom;
         initComponents();
         setVisible(true);
     }
@@ -40,7 +41,7 @@ public class MainController extends javax.swing.JFrame{
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox = new javax.swing.JComboBox<>();
         btnSend = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtMsgSender = new javax.swing.JTextField();
@@ -103,8 +104,13 @@ public class MainController extends javax.swing.JFrame{
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setText("Fuel Amount");
 
-        jComboBox1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Defence", "Helicopter", "Submarine", "Tank" }));
+        jComboBox.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Defence", "Helicopter", "Submarine", "Tank" }));
+        jComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxActionPerformed(evt);
+            }
+        });
 
         btnSend.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         btnSend.setText("Send");
@@ -150,7 +156,7 @@ public class MainController extends javax.swing.JFrame{
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -181,7 +187,7 @@ public class MainController extends javax.swing.JFrame{
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chkAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -214,7 +220,7 @@ public class MainController extends javax.swing.JFrame{
     private void chkAreaClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAreaClearActionPerformed
         boolean areaClear = chkAreaClear.isSelected();
         controlRoom.setArea(areaClear);
-        
+
     }//GEN-LAST:event_chkAreaClearActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
@@ -236,16 +242,26 @@ public class MainController extends javax.swing.JFrame{
     }//GEN-LAST:event_sldDefenceUnlockerStateChanged
 
     private void txtMsgSenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMsgSenderActionPerformed
-        
+
     }//GEN-LAST:event_txtMsgSenderActionPerformed
 
     private void txtGetMsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGetMsgActionPerformed
-        
+
     }//GEN-LAST:event_txtGetMsgActionPerformed
 
     private void txtGetMsg1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGetMsg1ActionPerformed
-        
+        txtGetMsg1.setText(controlRoom.getMessage()+"");
     }//GEN-LAST:event_txtGetMsg1ActionPerformed
+
+    private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxActionPerformed
+        if(jComboBox.getSelectedIndex() == 0) {
+            jComboBox.setSelectedIndex(1);
+            JOptionPane.showMessageDialog(this, "You cannot select the first option!");
+        }
+        if(jComboBox.getSelectedIndex()==1){
+            
+        }
+    }//GEN-LAST:event_jComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -253,7 +269,7 @@ public class MainController extends javax.swing.JFrame{
     private javax.swing.JCheckBox chkAreaClear;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -265,5 +281,4 @@ public class MainController extends javax.swing.JFrame{
     private javax.swing.JTextField txtMsgSender;
     // End of variables declaration//GEN-END:variables
 
-    
 }

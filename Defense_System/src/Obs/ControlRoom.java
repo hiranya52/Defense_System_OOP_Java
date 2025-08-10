@@ -4,6 +4,9 @@
  */
 package Obs;
 
+import View.Helicopter;
+import View.MainController;
+
 /**
  *
  * @author hiranyamendis
@@ -37,4 +40,13 @@ public class ControlRoom {
             ob.defenceUnloker(value);
         }
     }
+
+    public String getMessage(){
+        for(int i=0; i<nextIndex; i++){
+            Observer ob=observerArray[i];
+            return ob.privateMsgSender();
+        }
+        return " ";
+    }
+    
 }

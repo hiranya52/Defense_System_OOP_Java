@@ -4,21 +4,17 @@
  */
 package View;
 
-/**
- *
- * @author hiranyamendis
- */
-public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
 
-    /**
-     * Creates new form Helicopter
-     */
+public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
+    
     public Helicopter() {
         initComponents();
         setVisible(true);
         btnLaserOperation.setEnabled(false);
         btnShoot.setEnabled(false);
         btnMissileOperation.setEnabled(false);
+        spnSoilders.setValue(100);
+        spnAmmo.setValue(100);
     }
 
     /**
@@ -35,8 +31,8 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
         btnLaserOperation = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
+        spnSoilders = new javax.swing.JSpinner();
+        spnAmmo = new javax.swing.JSpinner();
         chkPosition = new javax.swing.JCheckBox();
         btnShoot = new javax.swing.JButton();
         btnMissileOperation = new javax.swing.JButton();
@@ -144,21 +140,25 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4))
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(spnSoilders)
+                                    .addComponent(spnAmmo)))
                             .addComponent(chkPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtSendMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,13 +172,13 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(spnSoilders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spnAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnMissileOperation, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnShoot, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,7 +211,10 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
     }//GEN-LAST:event_chkPositionActionPerformed
 
     private void btnShootActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShootActionPerformed
-
+        int count = Integer.parseInt(spnSoilders.getValue().toString());
+        spnSoilders.setValue(count-1);
+        int value = Integer.parseInt(spnAmmo.getValue().toString());
+        spnAmmo.setValue(count-1);
     }//GEN-LAST:event_btnShootActionPerformed
 
     private void btnMissileOperationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMissileOperationActionPerformed
@@ -223,8 +226,7 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-
-
+        
     }//GEN-LAST:event_btnSendActionPerformed
 
 
@@ -239,10 +241,10 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblAreaClear;
+    private javax.swing.JSpinner spnAmmo;
+    private javax.swing.JSpinner spnSoilders;
     private javax.swing.JTextArea txtMsgBox;
     private javax.swing.JTextField txtSendMsg;
     // End of variables declaration//GEN-END:variables
@@ -284,6 +286,13 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
             btnMissileOperation.setEnabled(false);
             btnLaserOperation.setEnabled(false);
         }
+    }
+    
+    
+
+    @Override
+    public String privateMsgSender() {
+        return "Helicopter : "+txtSendMsg.getText();
     }
 
 }
