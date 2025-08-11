@@ -41,12 +41,11 @@ public class ControlRoom {
         }
     }
 
-    public String getMessage(){
+    public void sendPrivateMsg(String msg){
         for(int i=0; i<nextIndex; i++){
+            System.out.println("Prints");
             Observer ob=observerArray[i];
-            return ob.privateMsgSender();
+            ob.getPrivateMsg(msg);
         }
-        return " ";
     }
-    
 }

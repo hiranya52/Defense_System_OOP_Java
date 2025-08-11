@@ -4,16 +4,19 @@
  */
 package View;
 
+import Obs.ControlRoom;
+import java.awt.Color;
+
 /**
  *
  * @author hiranyamendis
  */
 public class Submarine extends javax.swing.JFrame implements Obs.Observer {
 
-    /**
-     * Creates new form Submarine
-     */
-    public Submarine() {
+    private ControlRoom controlRoom;
+    
+    public Submarine(ControlRoom controlRoom) {
+        this.controlRoom=controlRoom;
         initComponents();
         setVisible(true);
         btnShoot.setEnabled(false);
@@ -48,10 +51,10 @@ public class Submarine extends javax.swing.JFrame implements Obs.Observer {
         jLabel3 = new javax.swing.JLabel();
         spnSoilders = new javax.swing.JSpinner();
         spnAmmo = new javax.swing.JSpinner();
-        jTextField2 = new javax.swing.JTextField();
-        jSlider1 = new javax.swing.JSlider();
-        jSlider2 = new javax.swing.JSlider();
-        jTextField3 = new javax.swing.JTextField();
+        txtEnergyAmount = new javax.swing.JTextField();
+        sldEnergyAmount = new javax.swing.JSlider();
+        sldOxygenAmount = new javax.swing.JSlider();
+        txtOxygenAmount = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -137,29 +140,39 @@ public class Submarine extends javax.swing.JFrame implements Obs.Observer {
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtEnergyAmount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtEnergyAmountActionPerformed(evt);
             }
         });
 
-        jSlider1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jSlider1.setMajorTickSpacing(20);
-        jSlider1.setMinorTickSpacing(10);
-        jSlider1.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
+        sldEnergyAmount.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        sldEnergyAmount.setMajorTickSpacing(20);
+        sldEnergyAmount.setMinorTickSpacing(10);
+        sldEnergyAmount.setOrientation(javax.swing.JSlider.VERTICAL);
+        sldEnergyAmount.setPaintLabels(true);
+        sldEnergyAmount.setPaintTicks(true);
+        sldEnergyAmount.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sldEnergyAmountStateChanged(evt);
+            }
+        });
 
-        jSlider2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jSlider2.setMajorTickSpacing(20);
-        jSlider2.setMinorTickSpacing(10);
-        jSlider2.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSlider2.setPaintLabels(true);
-        jSlider2.setPaintTicks(true);
+        sldOxygenAmount.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        sldOxygenAmount.setMajorTickSpacing(20);
+        sldOxygenAmount.setMinorTickSpacing(10);
+        sldOxygenAmount.setOrientation(javax.swing.JSlider.VERTICAL);
+        sldOxygenAmount.setPaintLabels(true);
+        sldOxygenAmount.setPaintTicks(true);
+        sldOxygenAmount.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sldOxygenAmountStateChanged(evt);
+            }
+        });
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtOxygenAmount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtOxygenAmountActionPerformed(evt);
             }
         });
 
@@ -209,17 +222,17 @@ public class Submarine extends javax.swing.JFrame implements Obs.Observer {
                         .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEnergyAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(sldEnergyAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtOxygenAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sldOxygenAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -273,13 +286,13 @@ public class Submarine extends javax.swing.JFrame implements Obs.Observer {
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEnergyAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(sldEnergyAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtOxygenAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSlider2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(sldOxygenAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(12, 12, 12))))
         );
 
@@ -306,20 +319,20 @@ public class Submarine extends javax.swing.JFrame implements Obs.Observer {
     }//GEN-LAST:event_btnSonarOperationActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        // TODO add your handling code here:
+        controlRoom.sendPrivateMsg("Submarine : "+txtSendMsg.getText());
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void chkPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPositionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkPositionActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtEnergyAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnergyAmountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtEnergyAmountActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtOxygenAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOxygenAmountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtOxygenAmountActionPerformed
 
     private void spnSoildersStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnSoildersStateChanged
         
@@ -328,6 +341,14 @@ public class Submarine extends javax.swing.JFrame implements Obs.Observer {
     private void spnAmmoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnAmmoStateChanged
         
     }//GEN-LAST:event_spnAmmoStateChanged
+
+    private void sldEnergyAmountStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldEnergyAmountStateChanged
+        txtEnergyAmount.setText(sldEnergyAmount.getValue()+"");
+    }//GEN-LAST:event_sldEnergyAmountStateChanged
+
+    private void sldOxygenAmountStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldOxygenAmountStateChanged
+        txtOxygenAmount.setText(sldOxygenAmount.getValue()+"");
+    }//GEN-LAST:event_sldOxygenAmountStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -343,23 +364,27 @@ public class Submarine extends javax.swing.JFrame implements Obs.Observer {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JSlider jSlider2;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblAreaClear;
+    private javax.swing.JSlider sldEnergyAmount;
+    private javax.swing.JSlider sldOxygenAmount;
     private javax.swing.JSpinner spnAmmo;
     private javax.swing.JSpinner spnSoilders;
+    private javax.swing.JTextField txtEnergyAmount;
     private javax.swing.JTextArea txtMsgBox;
+    private javax.swing.JTextField txtOxygenAmount;
     private javax.swing.JTextField txtSendMsg;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void areaCleared(boolean areaClear) {
         if (areaClear) {
+            lblAreaClear.setOpaque(true);
             lblAreaClear.setText("Area Is Cleared");
+            lblAreaClear.setBackground(Color.GREEN);
         } else {
+            lblAreaClear.setOpaque(true);
             lblAreaClear.setText("Area Is Not Cleared");
+            lblAreaClear.setBackground(Color.RED);
         }
     }
 
@@ -400,8 +425,8 @@ public class Submarine extends javax.swing.JFrame implements Obs.Observer {
     }
 
     @Override
-    public String privateMsgSender() {
-       return "Submarine : "+txtSendMsg.getText();
+    public void getPrivateMsg(String msg) {
+        
     }
 
 }

@@ -4,16 +4,19 @@
  */
 package View;
 
+import Obs.ControlRoom;
+import java.awt.Color;
+
 /**
  *
  * @author hiranyamendis
  */
 public class Tank extends javax.swing.JFrame implements Obs.Observer {
 
-    /**
-     * Creates new form Tank
-     */
-    public Tank() {
+    private ControlRoom controlRoom;
+    
+    public Tank(ControlRoom controlRoom) {
+        this.controlRoom=controlRoom;
         initComponents();
         setVisible(true);
         btnShoot.setEnabled(false);
@@ -46,8 +49,8 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
         spnSoilders = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         chkPosition = new javax.swing.JCheckBox();
-        jSlider1 = new javax.swing.JSlider();
-        jTextField2 = new javax.swing.JTextField();
+        sldFuelAmount = new javax.swing.JSlider();
+        txtFuelAmount = new javax.swing.JTextField();
         btnRotateShooting = new javax.swing.JButton();
         btnSend = new javax.swing.JButton();
 
@@ -104,16 +107,21 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
             }
         });
 
-        jSlider1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jSlider1.setMajorTickSpacing(20);
-        jSlider1.setMinorTickSpacing(10);
-        jSlider1.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
+        sldFuelAmount.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        sldFuelAmount.setMajorTickSpacing(20);
+        sldFuelAmount.setMinorTickSpacing(10);
+        sldFuelAmount.setOrientation(javax.swing.JSlider.VERTICAL);
+        sldFuelAmount.setPaintLabels(true);
+        sldFuelAmount.setPaintTicks(true);
+        sldFuelAmount.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sldFuelAmountStateChanged(evt);
+            }
+        });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtFuelAmount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtFuelAmountActionPerformed(evt);
             }
         });
 
@@ -172,11 +180,11 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sldFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(103, 103, 103))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -188,7 +196,7 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
                         .addComponent(spnSoilders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -215,7 +223,7 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtSendMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(sldFuelAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -241,17 +249,21 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
         // TODO add your handling code here:
     }//GEN-LAST:event_chkPositionActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtFuelAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFuelAmountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtFuelAmountActionPerformed
 
     private void btnRotateShootingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRotateShootingActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRotateShootingActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        // TODO add your handling code here:
+        controlRoom.sendPrivateMsg("Tank : "+txtSendMsg.getText());
     }//GEN-LAST:event_btnSendActionPerformed
+
+    private void sldFuelAmountStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldFuelAmountStateChanged
+        txtFuelAmount.setText(sldFuelAmount.getValue()+"");
+    }//GEN-LAST:event_sldFuelAmountStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -265,11 +277,11 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblAreaClear;
+    private javax.swing.JSlider sldFuelAmount;
     private javax.swing.JSpinner spnAmmo;
     private javax.swing.JSpinner spnSoilders;
+    private javax.swing.JTextField txtFuelAmount;
     private javax.swing.JTextArea txtMsgBox;
     private javax.swing.JTextField txtSendMsg;
     // End of variables declaration//GEN-END:variables
@@ -277,9 +289,13 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
     @Override
     public void areaCleared(boolean areaClear) {
         if (areaClear) {
+            lblAreaClear.setOpaque(true);
             lblAreaClear.setText("Area Is Cleared");
+            lblAreaClear.setBackground(Color.GREEN);
         } else {
+            lblAreaClear.setOpaque(true);
             lblAreaClear.setText("Area Is Not Cleared");
+            lblAreaClear.setBackground(Color.RED);
         }
     }
 
@@ -320,8 +336,8 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
     }
 
     @Override
-    public String privateMsgSender() {
-        return "Tank : "+txtSendMsg.getText();
+    public void getPrivateMsg(String msg) {
+        
     }
 
 }

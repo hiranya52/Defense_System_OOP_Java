@@ -4,10 +4,16 @@
  */
 package View;
 
+import Obs.ControlRoom;
+import java.awt.Color;
+
 
 public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
     
-    public Helicopter() {
+    private ControlRoom controlRoom;
+    
+    public Helicopter(ControlRoom controlRoom) {
+        this.controlRoom=controlRoom;
         initComponents();
         setVisible(true);
         btnLaserOperation.setEnabled(false);
@@ -39,8 +45,8 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtMsgBox = new javax.swing.JTextArea();
         txtSendMsg = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jSlider1 = new javax.swing.JSlider();
+        txtFuelAmount = new javax.swing.JTextField();
+        sldFuelAmount = new javax.swing.JSlider();
         btnSend = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,18 +102,30 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
         txtMsgBox.setRows(5);
         jScrollPane1.setViewportView(txtMsgBox);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtSendMsg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtSendMsgActionPerformed(evt);
             }
         });
 
-        jSlider1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jSlider1.setMajorTickSpacing(20);
-        jSlider1.setMinorTickSpacing(10);
-        jSlider1.setOrientation(javax.swing.JSlider.VERTICAL);
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
+        txtFuelAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFuelAmountActionPerformed(evt);
+            }
+        });
+
+        sldFuelAmount.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        sldFuelAmount.setMajorTickSpacing(20);
+        sldFuelAmount.setMinorTickSpacing(10);
+        sldFuelAmount.setOrientation(javax.swing.JSlider.VERTICAL);
+        sldFuelAmount.setPaintLabels(true);
+        sldFuelAmount.setPaintTicks(true);
+        sldFuelAmount.setValue(100);
+        sldFuelAmount.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sldFuelAmountStateChanged(evt);
+            }
+        });
 
         btnSend.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         btnSend.setText("Send");
@@ -153,11 +171,11 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sldFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(103, 103, 103))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(71, 71, 71)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -169,7 +187,7 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
                         .addComponent(spnSoilders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -194,7 +212,7 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtSendMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(sldFuelAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -221,13 +239,21 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
 
     }//GEN-LAST:event_btnMissileOperationActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void txtFuelAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFuelAmountActionPerformed
+        
+    }//GEN-LAST:event_txtFuelAmountActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        
+        controlRoom.sendPrivateMsg("Helicopter : "+txtSendMsg.getText());
     }//GEN-LAST:event_btnSendActionPerformed
+
+    private void txtSendMsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSendMsgActionPerformed
+        
+    }//GEN-LAST:event_txtSendMsgActionPerformed
+
+    private void sldFuelAmountStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldFuelAmountStateChanged
+        txtFuelAmount.setText(sldFuelAmount.getValue()+"");
+    }//GEN-LAST:event_sldFuelAmountStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -240,11 +266,11 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblAreaClear;
+    private javax.swing.JSlider sldFuelAmount;
     private javax.swing.JSpinner spnAmmo;
     private javax.swing.JSpinner spnSoilders;
+    private javax.swing.JTextField txtFuelAmount;
     private javax.swing.JTextArea txtMsgBox;
     private javax.swing.JTextField txtSendMsg;
     // End of variables declaration//GEN-END:variables
@@ -252,9 +278,13 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
     @Override
     public void areaCleared(boolean areaClear) {
         if (areaClear) {
+            lblAreaClear.setOpaque(true);
             lblAreaClear.setText("Area Is Cleared");
+            lblAreaClear.setBackground(Color.GREEN);
         } else {
+            lblAreaClear.setOpaque(true);
             lblAreaClear.setText("Area Is Not Cleared");
+            lblAreaClear.setBackground(Color.RED);
         }
     }
 
@@ -288,11 +318,9 @@ public class Helicopter extends javax.swing.JFrame implements Obs.Observer {
         }
     }
     
-    
-
     @Override
-    public String privateMsgSender() {
-        return "Helicopter : "+txtSendMsg.getText();
+    public void getPrivateMsg(String msg) {
+        
     }
 
 }

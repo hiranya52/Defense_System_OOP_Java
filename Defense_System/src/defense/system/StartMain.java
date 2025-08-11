@@ -20,10 +20,10 @@ public class StartMain {
         
         ControlRoom controlRoom = new ControlRoom();
         
-        controlRoom.addObserver(new Helicopter());
-        controlRoom.addObserver(new Tank());
-        controlRoom.addObserver(new Submarine());
+        controlRoom.addObserver(new Helicopter(controlRoom));
+        controlRoom.addObserver(new Tank(controlRoom));
+        controlRoom.addObserver(new Submarine(controlRoom));
+        controlRoom.addObserver(new MainController(controlRoom));
         
-        new MainController(controlRoom);
     }
 }
