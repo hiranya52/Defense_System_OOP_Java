@@ -37,33 +37,39 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        lblAreaClear = new javax.swing.JLabel();
+        spnSoilders = new javax.swing.JSpinner();
+        spnAmmo = new javax.swing.JSpinner();
+        chkPosition = new javax.swing.JCheckBox();
         btnShoot = new javax.swing.JButton();
-        btnRadarOperation = new javax.swing.JButton();
         btnMissileOperation = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtMsgBox = new javax.swing.JTextArea();
+        lblAreaClear = new javax.swing.JLabel();
         txtSendMsg = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        spnAmmo = new javax.swing.JSpinner();
-        spnSoilders = new javax.swing.JSpinner();
-        jLabel3 = new javax.swing.JLabel();
-        chkPosition = new javax.swing.JCheckBox();
-        sldFuelAmount = new javax.swing.JSlider();
+        btnRadarOperation = new javax.swing.JButton();
         txtFuelAmount = new javax.swing.JTextField();
-        btnRotateShooting = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        sldFuelAmount = new javax.swing.JSlider();
+        jLabel4 = new javax.swing.JLabel();
         btnSend = new javax.swing.JButton();
+        btnRotateShooting = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Helicopter.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 48)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Tank.png"))); // NOI18N
+        chkPosition.setBackground(new java.awt.Color(255, 255, 255));
+        chkPosition.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        chkPosition.setText(" Position");
+        chkPosition.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        chkPosition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkPositionActionPerformed(evt);
+            }
+        });
 
-        lblAreaClear.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        lblAreaClear.setText("Area Is Not Cleared");
-
-        btnShoot.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnShoot.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnShoot.setText("Shoot");
         btnShoot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,15 +77,7 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
             }
         });
 
-        btnRadarOperation.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        btnRadarOperation.setText("Radar Operation");
-        btnRadarOperation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRadarOperationActionPerformed(evt);
-            }
-        });
-
-        btnMissileOperation.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btnMissileOperation.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         btnMissileOperation.setText("Missile Operation");
         btnMissileOperation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,31 +89,20 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
         txtMsgBox.setRows(5);
         jScrollPane1.setViewportView(txtMsgBox);
 
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel4.setText("Ammo");
+        lblAreaClear.setFont(new java.awt.Font("Helvetica Neue", 1, 17)); // NOI18N
+        lblAreaClear.setText("Area Is Not Cleared");
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel3.setText("Soilders");
-
-        chkPosition.setBackground(new java.awt.Color(255, 255, 255));
-        chkPosition.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
-        chkPosition.setText(" Position");
-        chkPosition.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        chkPosition.addActionListener(new java.awt.event.ActionListener() {
+        txtSendMsg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkPositionActionPerformed(evt);
+                txtSendMsgActionPerformed(evt);
             }
         });
 
-        sldFuelAmount.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        sldFuelAmount.setMajorTickSpacing(20);
-        sldFuelAmount.setMinorTickSpacing(10);
-        sldFuelAmount.setOrientation(javax.swing.JSlider.VERTICAL);
-        sldFuelAmount.setPaintLabels(true);
-        sldFuelAmount.setPaintTicks(true);
-        sldFuelAmount.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sldFuelAmountStateChanged(evt);
+        btnRadarOperation.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        btnRadarOperation.setText("Radar Operation");
+        btnRadarOperation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRadarOperationActionPerformed(evt);
             }
         });
 
@@ -125,15 +112,26 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
             }
         });
 
-        btnRotateShooting.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        btnRotateShooting.setText("Rotate Shooting");
-        btnRotateShooting.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRotateShootingActionPerformed(evt);
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setText("Soilders");
+
+        sldFuelAmount.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        sldFuelAmount.setMajorTickSpacing(20);
+        sldFuelAmount.setMinorTickSpacing(10);
+        sldFuelAmount.setOrientation(javax.swing.JSlider.VERTICAL);
+        sldFuelAmount.setPaintLabels(true);
+        sldFuelAmount.setPaintTicks(true);
+        sldFuelAmount.setValue(100);
+        sldFuelAmount.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sldFuelAmountStateChanged(evt);
             }
         });
 
-        btnSend.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setText("Ammo");
+
+        btnSend.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnSend.setText("Send");
         btnSend.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         btnSend.addActionListener(new java.awt.event.ActionListener() {
@@ -142,93 +140,114 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
             }
         });
 
+        btnRotateShooting.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        btnRotateShooting.setText("Rotate Shooting");
+        btnRotateShooting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRotateShootingActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Tank.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnShoot, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtSendMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnMissileOperation, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAreaClear)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnRadarOperation, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnRotateShooting, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(80, 80, 80)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnRadarOperation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                                    .addComponent(btnShoot, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnMissileOperation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnRotateShooting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4))
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(spnSoilders, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(spnAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(chkPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtSendMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(spnSoilders, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spnAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(chkPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)))
+                        .addGap(54, 54, 54)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sldFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sldFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(spnSoilders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(7, 7, 7)
+                        .addComponent(lblAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(spnAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMissileOperation, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnShoot, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(chkPosition))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(btnMissileOperation, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnShoot, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(btnRadarOperation, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnRotateShooting, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel3)
+                                            .addComponent(spnSoilders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel4)
+                                            .addComponent(spnAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(21, 21, 21)
+                                        .addComponent(chkPosition)))
+                                .addGap(24, 24, 24)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnRadarOperation, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnRotateShooting, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtSendMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(sldFuelAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                                    .addComponent(txtSendMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(sldFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void chkPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPositionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkPositionActionPerformed
 
     private void btnShootActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShootActionPerformed
         int count = Integer.parseInt(spnSoilders.getValue().toString());
@@ -237,33 +256,33 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
         spnAmmo.setValue(count-1);
     }//GEN-LAST:event_btnShootActionPerformed
 
-    private void btnRadarOperationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRadarOperationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRadarOperationActionPerformed
-
     private void btnMissileOperationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMissileOperationActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnMissileOperationActionPerformed
 
-    private void chkPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPositionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkPositionActionPerformed
+    private void txtSendMsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSendMsgActionPerformed
+
+    }//GEN-LAST:event_txtSendMsgActionPerformed
+
+    private void btnRadarOperationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRadarOperationActionPerformed
+
+    }//GEN-LAST:event_btnRadarOperationActionPerformed
 
     private void txtFuelAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFuelAmountActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtFuelAmountActionPerformed
-
-    private void btnRotateShootingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRotateShootingActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRotateShootingActionPerformed
-
-    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        controlRoom.sendPrivateMsg("Tank : "+txtSendMsg.getText());
-    }//GEN-LAST:event_btnSendActionPerformed
 
     private void sldFuelAmountStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldFuelAmountStateChanged
         txtFuelAmount.setText(sldFuelAmount.getValue()+"");
     }//GEN-LAST:event_sldFuelAmountStateChanged
+
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        controlRoom.sendMsg("Tank : "+txtSendMsg.getText());
+    }//GEN-LAST:event_btnSendActionPerformed
+
+    private void btnRotateShootingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRotateShootingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRotateShootingActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -274,6 +293,7 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
     private javax.swing.JButton btnShoot;
     private javax.swing.JCheckBox chkPosition;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
@@ -301,7 +321,7 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
 
     @Override
     public void txtSender(String msg) {
-        txtMsgBox.setText("Main Controller : " + msg);
+        txtMsgBox.append("Main Controller : " + msg+"\n");
     }
 
     @Override
@@ -336,8 +356,15 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
     }
 
     @Override
-    public void getPrivateMsg(String msg) {
+    public void getMsg(String msg) {
         
+    }
+
+    @Override
+    public void getPrivateMsg(String defence, String msg) {
+        if(defence=="Tank"){
+            txtMsgBox.append(msg+"\n");
+        }
     }
 
 }

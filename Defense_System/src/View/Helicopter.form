@@ -23,125 +23,127 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jLabel1" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="btnShoot" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="txtSendMsg" min="-2" pref="344" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnMissileOperation" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="btnSend" min="-2" pref="82" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="lblAreaClear" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnLaserOperation" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblAreaClear" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="btnLaserOperation" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnShoot" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnMissileOperation" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="spnSoilders" max="32767" attributes="0"/>
-                                  <Component id="spnAmmo" max="32767" attributes="0"/>
+                                  <Component id="spnSoilders" min="-2" pref="62" max="-2" attributes="0"/>
+                                  <Component id="spnAmmo" min="-2" pref="62" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="chkPosition" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Component id="chkPosition" min="-2" pref="97" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                  </Group>
-                  <Component id="jScrollPane1" min="-2" pref="471" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="txtSendMsg" min="-2" pref="350" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnSend" min="-2" pref="110" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                  <Component id="txtFuelAmount" min="-2" pref="76" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="sldFuelAmount" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                      <Component id="txtFuelAmount" min="-2" pref="96" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
           </Group>
+          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblAreaClear" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="txtFuelAmount" min="-2" max="-2" attributes="0"/>
-                      </Group>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Component id="lblAreaClear" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spnSoilders" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="spnAmmo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnMissileOperation" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="btnShoot" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="chkPosition" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="btnMissileOperation" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Component id="btnShoot" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="btnLaserOperation" min="-2" pref="31" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="spnSoilders" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="spnAmmo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                      <Component id="chkPosition" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="107" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtSendMsg" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="btnSend" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnLaserOperation" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="txtFuelAmount" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="sldFuelAmount" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="142" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtSendMsg" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="btnSend" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
-                  <Component id="sldFuelAmount" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="48" style="1"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/Helicopter.png"/>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblAreaClear">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="18" style="1"/>
+          <Font name="Helvetica Neue" size="17" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Area Is Not Cleared"/>
       </Properties>
@@ -149,7 +151,7 @@
     <Component class="javax.swing.JButton" name="btnLaserOperation">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="14" style="1"/>
+          <Font name="Helvetica Neue" size="13" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Laser Operation"/>
       </Properties>
@@ -183,7 +185,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="16" style="1"/>
+          <Font name="Helvetica Neue" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value=" Position"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -199,7 +201,7 @@
     <Component class="javax.swing.JButton" name="btnShoot">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="14" style="1"/>
+          <Font name="Helvetica Neue" size="13" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Shoot"/>
       </Properties>
@@ -210,7 +212,7 @@
     <Component class="javax.swing.JButton" name="btnMissileOperation">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="14" style="1"/>
+          <Font name="Helvetica Neue" size="13" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Missile Operation"/>
       </Properties>
@@ -246,7 +248,7 @@
     <Component class="javax.swing.JSlider" name="sldFuelAmount">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="14" style="1"/>
+          <Font name="Helvetica Neue" size="12" style="1"/>
         </Property>
         <Property name="majorTickSpacing" type="int" value="20"/>
         <Property name="minorTickSpacing" type="int" value="10"/>
@@ -262,7 +264,7 @@
     <Component class="javax.swing.JButton" name="btnSend">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Helvetica Neue" size="16" style="1"/>
+          <Font name="Helvetica Neue" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Send"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -279,6 +281,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSendActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/img/Helicopter.png"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

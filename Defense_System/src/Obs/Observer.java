@@ -12,5 +12,6 @@ public interface Observer {
     public void areaCleared(boolean areaClear);
     public void txtSender(String msg);
     public void defenceUnloker(int value);
-    public void getPrivateMsg(String msg);
+    public void getMsg(String msg);
+    public void getPrivateMsg(String defence, String msg);
 }

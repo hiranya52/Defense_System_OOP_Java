@@ -35,28 +35,28 @@ public class MainController extends javax.swing.JFrame implements Obs.Observer{
 
         sldDefenceUnlocker = new javax.swing.JSlider();
         chkAreaClear = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        chkSendPrivate = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox = new javax.swing.JComboBox<>();
+        cmbSelectDefence = new javax.swing.JComboBox<>();
         btnSend = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         txtMsgSender = new javax.swing.JTextField();
-        txtMsg = new javax.swing.JTextField();
         txtSoilderCount = new javax.swing.JTextField();
         txtFuelAmount = new javax.swing.JTextField();
         txtPosition = new javax.swing.JTextField();
         txtAmmoAmount = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
+        txtMsg = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
         txtGetMsg = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
 
-        sldDefenceUnlocker.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        sldDefenceUnlocker.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
         sldDefenceUnlocker.setMajorTickSpacing(20);
         sldDefenceUnlocker.setMinorTickSpacing(10);
         sldDefenceUnlocker.setPaintLabels(true);
@@ -69,7 +69,7 @@ public class MainController extends javax.swing.JFrame implements Obs.Observer{
         });
 
         chkAreaClear.setBackground(new java.awt.Color(255, 255, 255));
-        chkAreaClear.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
+        chkAreaClear.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         chkAreaClear.setText("Area Clear");
         chkAreaClear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         chkAreaClear.addActionListener(new java.awt.event.ActionListener() {
@@ -78,17 +78,17 @@ public class MainController extends javax.swing.JFrame implements Obs.Observer{
             }
         });
 
-        jCheckBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox2.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
-        jCheckBox2.setText("Send Private");
-        jCheckBox2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        chkSendPrivate.setBackground(new java.awt.Color(255, 255, 255));
+        chkSendPrivate.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        chkSendPrivate.setText("Send Private");
+        chkSendPrivate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        chkSendPrivate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                chkSendPrivateActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jButton1.setText("Collect Informations");
         jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -97,27 +97,27 @@ public class MainController extends javax.swing.JFrame implements Obs.Observer{
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel2.setText("Soilder Count");
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel3.setText("Ammo Amount");
 
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel4.setText("Position");
 
-        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel5.setText("Fuel Amount");
 
-        jComboBox.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Defence", "Helicopter", "Tank", "Submarine" }));
-        jComboBox.addActionListener(new java.awt.event.ActionListener() {
+        cmbSelectDefence.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        cmbSelectDefence.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Defence", "Helicopter", "Tank", "Submarine" }));
+        cmbSelectDefence.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxActionPerformed(evt);
+                cmbSelectDefenceActionPerformed(evt);
             }
         });
 
-        btnSend.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
+        btnSend.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnSend.setText("Send");
         btnSend.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         btnSend.addActionListener(new java.awt.event.ActionListener() {
@@ -126,97 +126,93 @@ public class MainController extends javax.swing.JFrame implements Obs.Observer{
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MainController.png"))); // NOI18N
-
         txtMsgSender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMsgSenderActionPerformed(evt);
             }
         });
 
-        txtMsg.addActionListener(new java.awt.event.ActionListener() {
+        txtSoilderCount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMsgActionPerformed(evt);
+                txtSoilderCountActionPerformed(evt);
             }
         });
 
+        txtMsg.setColumns(20);
+        txtMsg.setRows(5);
+        jScrollPane1.setViewportView(txtMsg);
+
         txtGetMsg.setColumns(20);
         txtGetMsg.setRows(5);
-        jScrollPane1.setViewportView(txtGetMsg);
+        jScrollPane3.setViewportView(txtGetMsg);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MainController.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(56, 56, 56)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtAmmoAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel3)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(1, 1, 1)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txtPosition, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                                                .addGap(17, 17, 17))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(txtSoilderCount, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(sldDefenceUnlocker, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(cmbSelectDefence, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkAreaClear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtMsgSender, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtSoilderCount, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAmmoAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(16, 16, 16)
+                        .addComponent(sldDefenceUnlocker, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(txtMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50))
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMsgSender, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(chkAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(chkSendPrivate, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbSelectDefence, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtSoilderCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtSoilderCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -228,24 +224,26 @@ public class MainController extends javax.swing.JFrame implements Obs.Observer{
                         .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
-                            .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(txtMsgSender, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBox2)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sldDefenceUnlocker, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sldDefenceUnlocker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(1, 1, 1)
+                        .addComponent(chkAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(154, 154, 154)
+                                .addComponent(btnSend))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(txtMsgSender, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(chkSendPrivate)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addGap(9, 9, 9))
         );
 
         pack();
@@ -254,12 +252,11 @@ public class MainController extends javax.swing.JFrame implements Obs.Observer{
     private void chkAreaClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAreaClearActionPerformed
         boolean areaClear = chkAreaClear.isSelected();
         controlRoom.setArea(areaClear);
-
     }//GEN-LAST:event_chkAreaClearActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void chkSendPrivateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSendPrivateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_chkSendPrivateActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -267,7 +264,12 @@ public class MainController extends javax.swing.JFrame implements Obs.Observer{
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         String msg = txtMsgSender.getText();
-        controlRoom.setMsg(msg);
+        if(chkSendPrivate.isSelected()){
+            String selectedValue = cmbSelectDefence.getSelectedItem().toString();
+            controlRoom.sendPrivateMsg(selectedValue, "Main Controller : "+msg);
+        }else{
+            controlRoom.setMsg(msg);
+        }
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void sldDefenceUnlockerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldDefenceUnlockerStateChanged
@@ -279,38 +281,33 @@ public class MainController extends javax.swing.JFrame implements Obs.Observer{
 
     }//GEN-LAST:event_txtMsgSenderActionPerformed
 
-    private void txtMsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMsgActionPerformed
+    private void cmbSelectDefenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectDefenceActionPerformed
+      
+    }//GEN-LAST:event_cmbSelectDefenceActionPerformed
 
-    }//GEN-LAST:event_txtMsgActionPerformed
-
-    private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxActionPerformed
-//         if(jComboBox.getSelectedIndex() == 0) {
-//            jComboBox.setSelectedIndex(1);
-//            JOptionPane.showMessageDialog(this, "You cannot select the first option!");
-//        }
-//        if(jComboBox.getSelectedIndex()==1){
-//            controlRoom.sendPrivate(" : "+txtMsgSender.getText());
-//        }
-    }//GEN-LAST:event_jComboBoxActionPerformed
+    private void txtSoilderCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoilderCountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSoilderCountActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSend;
     private javax.swing.JCheckBox chkAreaClear;
+    private javax.swing.JCheckBox chkSendPrivate;
+    private javax.swing.JComboBox<String> cmbSelectDefence;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JComboBox<String> jComboBox;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSlider sldDefenceUnlocker;
     private javax.swing.JTextField txtAmmoAmount;
     private javax.swing.JTextField txtFuelAmount;
     private javax.swing.JTextArea txtGetMsg;
-    private javax.swing.JTextField txtMsg;
+    private javax.swing.JTextArea txtMsg;
     private javax.swing.JTextField txtMsgSender;
     private javax.swing.JTextField txtPosition;
     private javax.swing.JTextField txtSoilderCount;
@@ -332,8 +329,15 @@ public class MainController extends javax.swing.JFrame implements Obs.Observer{
     }
 
     @Override
-    public void getPrivateMsg(String msg) {
+    public void getMsg(String msg) {
         txtGetMsg.append(msg + "\n");
     }
+
+    @Override
+    public void getPrivateMsg(String defence, String msg) {
+        
+    }
+
+    
 
 }
