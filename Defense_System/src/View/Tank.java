@@ -6,6 +6,7 @@ package View;
 
 import Obs.ControlRoom;
 import java.awt.Color;
+import javax.swing.Timer;
 
 /**
  *
@@ -14,6 +15,8 @@ import java.awt.Color;
 public class Tank extends javax.swing.JFrame implements Obs.Observer {
 
     private ControlRoom controlRoom;
+    private Timer timer;
+    private boolean timerStarted = false;
     
     public Tank(ControlRoom controlRoom) {
         this.controlRoom=controlRoom;
@@ -25,6 +28,8 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
         btnRotateShooting.setEnabled(false);
         spnSoilders.setValue(100);
         spnAmmo.setValue(100);
+        txtFuelAmount.setText(sldFuelAmount.getValue() + "");
+        fuelStatus();
     }
 
     /**
@@ -54,6 +59,7 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
         btnSend = new javax.swing.JButton();
         btnRotateShooting = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Helicopter.png"))); // NOI18N
 
@@ -89,7 +95,7 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
         txtMsgBox.setRows(5);
         jScrollPane1.setViewportView(txtMsgBox);
 
-        lblAreaClear.setFont(new java.awt.Font("Helvetica Neue", 1, 17)); // NOI18N
+        lblAreaClear.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblAreaClear.setText("Area Is Not Cleared");
 
         txtSendMsg.addActionListener(new java.awt.event.ActionListener() {
@@ -150,11 +156,17 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Tank.png"))); // NOI18N
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel5.setText("Fuel Amount");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -189,14 +201,17 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(chkPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)))
-                        .addGap(54, 54, 54)))
+                        .addGap(43, 43, 43)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sldFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel5)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(sldFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,10 +251,12 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
                                     .addComponent(txtSendMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(sldFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
@@ -278,12 +295,31 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         controlRoom.sendMsg("Tank : "+txtSendMsg.getText());
+        txtSendMsg.setText("");
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnRotateShootingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRotateShootingActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRotateShootingActionPerformed
 
+    private void fuelStatus(){
+        if (!timerStarted) {
+            timer = new javax.swing.Timer(4000, new java.awt.event.ActionListener() {
+                @Override
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    int value = sldFuelAmount.getValue();
+                    if (value > 0) {
+                        sldFuelAmount.setValue(value - 1);
+                        txtFuelAmount.setText(sldFuelAmount.getValue() + "");
+                    } else {
+                        timer.stop();
+                    }
+                }
+            });
+            timer.start();
+            timerStarted = true;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMissileOperation;
@@ -296,6 +332,7 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAreaClear;
     private javax.swing.JSlider sldFuelAmount;
@@ -366,5 +403,6 @@ public class Tank extends javax.swing.JFrame implements Obs.Observer {
             txtMsgBox.append(msg+"\n");
         }
     }
+
 
 }
